@@ -7,9 +7,13 @@
       <friend-contact
       v-for="friend in friends" :key="friend.id"
       :name="friend.name"
+      :id="friend.id"
       :phone-number="friend.phone"
       :email-address="friend.email"
-      :favourite="true"
+      :favourite="friend.isFavourite"
+      @toggle-favourite="toggleFav"
+
+
       ></friend-contact>
     
     </ul>
@@ -26,6 +30,7 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavourite:true,
           
         },
         {
@@ -33,10 +38,20 @@ export default {
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavourite:false,
         },
       ],
     };
   },
+  methods:{
+    toggleFav(friendId){
+      const identifiedFriend=this.friends.find(friend=>friend.id===friendId);
+      // console.log(identifiedFriend)
+      identifiedFriend.isFavourite=! identifiedFriend.isFavourite;
+      console.log(identifiedFriend.isFavourite)
+
+    }
+  }
 };
 </script>
 
