@@ -4,6 +4,7 @@
     <h2>{{favourite ?  "Favourite":"Not Favourite"}}</h2>
     <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <button @click="toggleFavourite">Toggle  favourite</button>
+    <button @click="deleteFriend">Delete</button>
     <ul v-if="detailsAreVisible">
       <li>
         <strong>ID:</strong>
@@ -61,15 +62,17 @@ export default {
       // }
     },
   },
-  emits:{
-    'toggle-favourite':function(id){
-      if(id){
-        return true;
-      }else{
-        return false;
-      }
-    }
-  },
+  emits:['toggle-favourite','delete-friend'],
+  // {
+  //   'toggle-favourite':function(id){
+  //     if(id){
+  //       return true;
+  //     }else{
+  //       return false;
+  //     }
+  //   },
+  //  ' delete-friend':true,
+  // },
   data() {
     return {
       detailsAreVisible: false,
@@ -92,6 +95,9 @@ export default {
       // console.log(this.fav)
       this.$emit("toggle-favourite",this.id)
       console.log(this.fav)
+    },
+    deleteFriend(){
+      this.$emit("delete-friend",this.id)
     }
   },
   
