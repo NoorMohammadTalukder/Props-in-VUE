@@ -9,6 +9,7 @@
       :name="friend.name"
       :phone-number="friend.phone"
       :email-address="friend.email"
+      :favourite="true"
       ></friend-contact>
     
     </ul>
@@ -25,6 +26,7 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          
         },
         {
           id: "julie",
