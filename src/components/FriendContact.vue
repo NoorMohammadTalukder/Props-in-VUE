@@ -44,7 +44,13 @@ export default {
     },
     favourite:{
       type:Boolean,
-      required:true,
+      required:false,
+      default:true,
+      validator:function(value){
+        if (value===false || value===false){
+          console.log("valid");
+        }
+      }
     },
   },
   data() {
@@ -55,8 +61,9 @@ export default {
         name: "Manuel Lorenz",
         phone: "0123 45678 90",
         email: "manuel@localhost.com",
-        fav:this.favourite,
+      
       },
+      fav:this.favourite,
     };
   },
   methods: {
