@@ -61,6 +61,15 @@ export default {
       // }
     },
   },
+  emits:{
+    'toggle-favourite':function(id){
+      if(id){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  },
   data() {
     return {
       detailsAreVisible: false,

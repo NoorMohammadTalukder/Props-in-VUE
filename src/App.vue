@@ -3,6 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <new-friend @add-friend="addFriend"></new-friend>
     <ul>
       <friend-contact
       v-for="friend in friends" :key="friend.id"
@@ -21,7 +22,10 @@
 </template>
 
 <script>
-export default {
+
+
+export default 
+{
   data() {
     return {
       friends: [
@@ -50,6 +54,16 @@ export default {
       identifiedFriend.isFavourite=! identifiedFriend.isFavourite;
       console.log(identifiedFriend.isFavourite)
 
+    },
+    addFriend(name,phone,email){
+      const newFriend={
+        id: new Date().toISOString(),
+          name: name,
+          phone: phone,
+          email: email,
+          isFavourite:true,
+      }
+      this.friends.push(newFriend);
     }
   }
 };
@@ -81,7 +95,7 @@ header {
   padding: 0;
   list-style: none;
 }
-#app li {
+#app li,form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
